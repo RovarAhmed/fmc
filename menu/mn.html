@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FMC CAFE Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0083a0;
+      --light-bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --muted: #777;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    .langs {
+      margin-top: 20px;
+    }
+
+    .langs button {
+      margin: 0 6px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .langs button:hover {
+      background-color: white;
+      color: var(--primary-color);
+    }
+
+    .menu {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: var(--card-bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 14px;
+    }
+
+    h2 {
+      font-size: 26px;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      border-bottom: 2px solid #e6e6e6;
+      padding-bottom: 8px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .item {
+      padding: 16px 0;
+      border-bottom: 1px dashed #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+
+    .item:hover {
+      background-color: #f0f8fa;
+    }
+
+    .item h3 {
+      font-size: 18px;
+      color: var(--primary-color);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .lang-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .lang-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .qr-code {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .qr-code img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .price {
+        margin-top: 6px;
+      }
+    }
+  </style>
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(div => div.classList.remove('active'));
+      document.getElementById(lang).classList.add('active');
+      localStorage.setItem('fmc_lang', lang);
+    }
+
+    window.onload = () => {
+      const storedLang = localStorage.getItem('fmc_lang') || 'en';
+      switchLang(storedLang);
+    }
+  </script>
+</head>
+<body>
+
+  <div class="header">
+    <h1>FMC CAFE MENU</h1>
+    <div class="langs">
+      <button onclick="switchLang('en')">English</button>
+      <button onclick="switchLang('ku')">Kurdî</button>
+      <button onclick="switchLang('ar')">العربية</button>
+    </div>
+  </div>
+
+  <!-- ⚠️ Insert your same language content blocks here -->
+  <!-- Just copy and paste the language blocks you already have from your code into this layout -->
+  <div class="menu">
+    <!-- English -->
+    <div id="en" class="lang-content active">
+      <div class="section">
+        <h2>Breakfast / Fast Food</h2>
+        <div class="item"><h3>Shakshuka</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Sunny Side Eggs</h3><span class="price">2000</span></div>
+        <div class="item"><h3>Boiled Eggs</h3><span class="price">2000</span></div>
+        <div class="item"><h3>Omelette</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Egg Sandwich</h3><span class="price">2000</span></div>
+        <div class="item"><h3>Cheese Sandwich</h3><span class="price">2000</span></div>
+        <div class="item"><h3>Egg & Cheese Sandwich</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Sausage Sandwich</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Sausage & Cheese Sandwich</h3><span class="price">4000</span></div>
+        <div class="item"><h3>Potato Sandwich</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Potato & Cheese Sandwich</h3><span class="price">4000</span></div>
+        <div class="item"><h3>Chicken Sandwich</h3><span class="price">5000</span></div>
+        <div class="item"><h3>Shawarma Sandwich</h3><span class="price">6000</span></div>
+        <div class="item"><h3>Burger</h3><span class="price">5000</span></div>
+        <div class="item"><h3>Chicken Burger</h3><span class="price">5000</span></div>
+        <div class="item"><h3>Cheese Burger</h3><span class="price">6000</span></div>
+        <div class="item"><h3>Potato Plate</h3><span class="price">3000</span></div>
+        <div class="item"><h3>Potato & Cheese Plate</h3><span class="price">4000</span></div>
+      </div>
+    </div>
+
+
+    <!-- Kurdish -->
+    <div id="ku" class="lang-content" dir="rtl">
+        <div class="section">
+          <h2>نانی بەیانی / فاس فود</h2>
+          <div class="item"><h3>شەکشۆکە</h3><span class="price">3000</span></div>
+          <div class="item"><h3>ھێلی ھەڵکەوتوو</h3><span class="price">2000</span></div>
+          <div class="item"><h3>ھێلی جووشراو</h3><span class="price">2000</span></div>
+          <div class="item"><h3>ئۆملێت</h3><span class="price">3000</span></div>
+          <div class="item"><h3>ساندویچی ھێل</h3><span class="price">2000</span></div>
+          <div class="item"><h3>ساندویچی پەنیر</h3><span class="price">2000</span></div>
+          <div class="item"><h3>ساندویچی ھێل و پەنیر</h3><span class="price">3000</span></div>
+          <div class="item"><h3>ساندویچی سۆسج</h3><span class="price">3000</span></div>
+          <div class="item"><h3>ساندویچی سۆسج و پەنیر</h3><span class="price">4000</span></div>
+          <div class="item"><h3>ساندویچی پەتاتە</h3><span class="price">3000</span></div>
+          <div class="item"><h3>ساندویچی پەتاتە و پەنیر</h3><span class="price">4000</span></div>
+          <div class="item"><h3>ساندویچی مێرگ</h3><span class="price">5000</span></div>
+          <div class="item"><h3>ساندویچی شاوروما</h3><span class="price">6000</span></div>
+          <div class="item"><h3>بێرگەر</h3><span class="price">5000</span></div>
+          <div class="item"><h3>بێرگەر مێرگ</h3><span class="price">5000</span></div>
+          <div class="item"><h3>بێرگەر پەنیر</h3><span class="price">6000</span></div>
+          <div class="item"><h3>پلیتەی پەتاتە</h3><span class="price">3000</span></div>
+          <div class="item"><h3>پەتاتە و پەنیر</h3><span class="price">4000</span></div>
+        </div>
+    </div>
+    <!-- Arabic -->
+    <div id="ar" class="lang-content" dir="rtl">
+        <div class="section">
+          <h2>فطور / فاست فود</h2>
+          <div class="item"><h3>شكشوكة</h3><span class="price">3000</span></div>
+          <div class="item"><h3>بيض عيون</h3><span class="price">2000</span></div>
+          <div class="item"><h3>بيض مسلوق</h3><span class="price">2000</span></div>
+          <div class="item"><h3>اومليت</h3><span class="price">3000</span></div>
+          <div class="item"><h3>سندويج بيض</h3><span class="price">2000</span></div>
+          <div class="item"><h3>سندويج جبن</h3><span class="price">2000</span></div>
+          <div class="item"><h3>سندويج جبن وبيض</h3><span class="price">3000</span></div>
+          <div class="item"><h3>سندويج نقانق</h3><span class="price">3000</span></div>
+          <div class="item"><h3>سندويج نقانق وجبن</h3><span class="price">4000</span></div>
+          <div class="item"><h3>سندويج بطاطا</h3><span class="price">3000</span></div>
+          <div class="item"><h3>سندويج بطاطا وجبن</h3><span class="price">4000</span></div>
+          <div class="item"><h3>سندويج دجاج</h3><span class="price">5000</span></div>
+          <div class="item"><h3>سندويج شاورما</h3><span class="price">6000</span></div>
+          <div class="item"><h3>بركر</h3><span class="price">5000</span></div>
+          <div class="item"><h3>بركر دجاج</h3><span class="price">5000</span></div>
+          <div class="item"><h3>همبركر جبن</h3><span class="price">6000</span></div>
+          <div class="item"><h3>صحن بطاطا</h3><span class="price">3000</span></div>
+          <div class="item"><h3>صحن بطاطا مع جبن</h3><span class="price">4000</span></div>
+        </div>
+   
+ </div>
+  
+  
+    <!-- Insert existing language content here (EN / KU / AR blocks) -->
+    <!-- Keep IDs and structure the same; the new styles will apply automatically -->
+
+
+
+  <footer>
+    <p>&copy; 2025 FMC CAFE. All rights reserved.</p>
+    <p>Location: Sulaimani | Call: +964 770 000 0000 | Instagram: @migmigiraq</p>
+  </footer>
+
+</body>
+</html>
